@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Mixco - Tradición chocolatera de Mixco, Guatemala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #4A2511;
+            --secondary-color: #8B4513;
+            --accent-color: #D2691E;
+            --accent-light: #EADDCA;
+            --text-color: #1E1E1E;
+            --text-light: #FFFFFF;
+            --background: #FEF9F3;
+            --section-bg: #FFF;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 35px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(210, 105, 30, 0.3);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(210, 105, 30, 0.4);
+            background: var(--primary-color);
+        }
+        
+        .btn i {
+            margin-left: 10px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 20px 0;
+        }
+        
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-left: 15px;
+        }
+        
+        .logo-text span {
+            color: var(--accent-color);
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 10px 0;
+            transition: var(--transition);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--background), transparent);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent-color);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            z-index: 1;
+        }
+        
+        .scroll-down i {
+            font-size: 24px;
+            margin-top: 8px;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title-container {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-subtitle {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .section-description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 80px 0 0;
+            position: relative;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+        
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-left: 10px;
+        }
+        
+        .footer-logo-text span {
+            color: var(--accent-color);
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a i {
+            font-size: 12px;
+            color: var(--accent-color);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact .icon {
+            color: var(--accent-color);
+            font-size: 18px;
+        }
+        
+        .footer-contact .text {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .footer-newsletter p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            position: relative;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .newsletter-form button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            border: none;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50px;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 56px;
+            }
+            
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .vm-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .proceso-timeline::before {
+                left: 30px;
+            }
+            
+            .proceso-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .proceso-item:nth-child(even) {
+                padding-left: 80px;
+            }
+            
+            .proceso-icon {
+                left: 0;
+                right: auto;
+            }
+            
+            .proceso-item:nth-child(even) .proceso-icon {
+                left: 0;
+            }
+            
+            .proceso-content::before {
+                left: -15px;
+                right: auto;
+                box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.05);
+            }
+            
+            .proceso-item:nth-child(even) .proceso-content::before {
+                left: -15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                transition: var(--transition);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav ul.show {
+                right: 0;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+            }
+            
+            .cta-title {
+                font-size: 36px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .testimonial-container {
+                padding: 40px 20px;
+            }
+            
+            .productos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-img">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="logo-text">Chocolate <span>Mixco</span></div>
+            </a>
+            
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#hero" class="active">Inicio</a></li>
+                    <li><a href="#historia">Historia</a></li>
+                    <li><a href="#vision-mision">Visión y Misión</a></li>
+                    <li><a href="#productos">Nuestro Chocolate</a></li>
+                    <li><a href="#proceso">Proceso</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <div class="hero-badge animate__animated animate__fadeInDown">Tradición desde 1950</div>
+            <h1 class="animate__animated animate__fadeInUp">El Arte del Chocolate Artesanal de Mixco</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Descubre el auténtico sabor del cacao guatemalteco transformado por las manos maestras de nuestras chocolateras tradicionales.</p>
+            <a href="#productos" class="btn animate__animated animate__fadeInUp animate__delay-1s">
+                Descubrir Sabores <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="scroll-down" id="scroll-btn">
+            <span>Descubre</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="historia">
+        <div class="container">
+            <div class="section-title-container">
+                <div class="section-subtitle" data-aos="fade-up">Nuestra Esencia</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Historia de Tradición</h2>
+                <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                    Una herencia cultural viva que ha sido transmitida de generación en generación por las mujeres chocolateras de Mixco.
+                </p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="/api/placeholder/600/500" alt="Señoras chocolateras trabajando">
+                </div>
+                
+                <div class="about-text" data-aos="fade-left">
+                    <h3>Preservando el Legado Maya</h3>
+                    <p>La tradición chocolatera en Mixco, Guatemala, se remonta a varios siglos atrás, cuando los antiguos mayas consideraban el cacao como "el alimento de los dioses". Este valioso legado ha sido preservado con orgullo y dedicación por generaciones de familias mixqueñas.</p>
+                    
+                    <p>Las señoras chocolateras de Mixco han mantenido viva esta herencia ancestral, transmitiendo sus conocimientos de madre a hija y preservando técnicas centenarias que dan como resultado un chocolate de sabor incomparable, rico en historia y cultura.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature" data-aos="fade-up" data-aos-delay="100">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>Tradición Centenaria</h4>
+                                <p>Técnicas y recetas transmitidas de generación en generación.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-feature" data-aos="fade-up" data-aos-delay="200">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-female"></i>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>Empoderamiento Femenino</h4>
+                                <p>Un oficio que da independencia económica a las mujeres de Mixco.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-feature" data-aos="fade-up" data-aos-delay="300">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>Ingredientes Naturales</h4>
+                                <p>Solo utilizamos cacao de origen guatemalteco de la más alta calidad.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-feature" data-aos="fade-up" data-aos-delay="400">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-hands"></i>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>Elaboración Artesanal</h4>
+                                <p>Cada pieza es elaborada a mano con paciencia y dedicación.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Mission Section -->
+    <section class="vision-mission" id="vision-mision">
+        <div class="container">
+            <div class="section-title-container">
+                <div class="section-subtitle" data-aos="fade-up">Nuestro Propósito</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Visión y Misión</h2>
+                <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                    Los valores que guían nuestro camino y el futuro que queremos construir juntas.
+                </p>
+            </div>
+            
+            <div class="vm-container">
+                <div class="vm-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="vm-card-icon">
+                        <i class="far fa-eye"></i>
+                    </div>
+                    <h3>Nuestra Visión</h3>
+                    <p>Ser reconocidas internacionalmente como un referente en la producción de chocolate artesanal guatemalteco, preservando nuestras tradiciones ancestrales mientras innovamos para las nuevas generaciones.</p>
+                    <p>Aspiramos a crear un legado sostenible que beneficie a toda nuestra comunidad, promueva prácticas responsables con el medio ambiente y celebre la riqueza cultural de Mixco a través del chocolate como embajador de nuestra identidad.</p>
+                </div>
+                
+                <div class="vm-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="vm-card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Nuestra Misión</h3>
+                    <p>Elaborar chocolate artesanal de la más alta calidad utilizando cacao 100% guatemalteco, manteniendo vivas las técnicas tradicionales de las señoras chocolateras de Mixco.</p>
+                    <p>Empoderamos a las mujeres de nuestra comunidad, proporcionándoles independencia económica y preservando el patrimonio cultural a través de la transmisión de conocimientos ancestrales, mientras promovemos prácticas de comercio justo con los productores locales de cacao.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="productos">
+        <div class="container">
+            <div class="section-title-container">
+                <div class="section-subtitle" data-aos="fade-up">Sabores Únicos</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Nuestros Chocolates</h2>
+                <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                    En Chocolate Mixco trabajamos con diversos tipos de cacao guatemalteco, cada uno con características únicas que se reflejan en nuestros productos artesanales.
+                </p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card" data-aos="fade-up">
+                    <div class="product-image">
+                        <img src="/api/placeholder/600/400" alt="Chocolate criollo">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cacao Criollo</h3>
+                        <p>El más fino y raro de los cacaos. Nuestro chocolate elaborado con cacao criollo tiene un sabor delicado, con notas aromáticas y dulces, baja acidez y ausencia de amargor.</p>
+                        <div class="product-footer">
+                            <div class="product-origin">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Alta Verapaz</span>
+                            </div>
+                            <a href="#" class="product-link">Descubrir <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-image">
+                        <img src="/api/placeholder/600/400" alt="Chocolate trinitario">
+                        <div class="product-badge">Popular</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cacao Trinitario</h3>
+                        <p>Un híbrido entre el criollo y el forastero, cultivado en la costa sur de Guatemala. Nuestro chocolate de cacao trinitario ofrece un equilibrio perfecto entre sabor y aroma, con notas frutales.</p>
+                        <div class="product-footer">
+                            <div class="product-origin">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Costa Sur</span>
+                            </div>
+                            <a href="#" class="product-link">Descubrir <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-image">
+                        <img src="/api/placeholder/600/400" alt="Chocolate tradicional">
+                    </div> </div> <div class="product-info"> 
+                        <h3>Chocolate Tradicional de Mixco</h3> 
+                        <p>Nuestra receta más antigua, elaborada con la mezcla perfecta de cacao forastero y especias locales. Un sabor intenso y auténtico que ha sido el orgullo de generaciones de chocolateras.</p> 
+                        <div class="product-footer"> <div class="product-origin"> <i class="fas fa-map-marker-alt"></i> <span>Mixco, Guatemala</span> </div> 
+                        <a href="#" class="product-link">Descubrir <i class="fas fa-arrow-right"></i></a>
+                     </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </section>
+    <!-- Process Section -->
+<section class="process-section" id="proceso">
+    <div class="container">
+        <div class="section-title-container">
+            <div class="section-subtitle" data-aos="fade-up">Artesanía Pura</div>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Nuestro Proceso</h2>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                Cada tableta de chocolate es el resultado de un cuidadoso proceso artesanal que combina tradición, paciencia y amor por el oficio.
+            </p>
+        </div>
+        
+        <div class="proceso-timeline">
+            <div class="proceso-item" data-aos="fade-up">
+                <div class="proceso-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="proceso-content">
+                    <h3>1. Selección del Cacao</h3>
+                    <p>Seleccionamos manualmente los mejores granos de cacao de pequeños productores guatemaltecos, asegurando calidad y comercio justo.</p>
+                </div>
+            </div>
+            
+            <div class="proceso-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="proceso-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="proceso-content">
+                    <h3>2. Tostado Tradicional</h3>
+                    <p>Los granos se tuestan en comales de barro a fuego lento, técnica ancestral que realza los aromas naturales del cacao.</p>
+                </div>
+            </div>
+            
+            <div class="proceso-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="proceso-icon">
+                    <i class="fas fa-mortar-pestle"></i>
+                </div>
+                <div class="proceso-content">
+                    <h3>3. Descascarillado y Molido</h3>
+                    <p>Tras enfriarse, los granos se descascarillan a mano y se muelen en metates de piedra volcánica hasta obtener una pasta fina.</p>
+                </div>
+            </div>
+            
+            <div class="proceso-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="proceso-icon">
+                    <i class="fas fa-blender"></i>
+                </div>
+                <div class="proceso-content">
+                    <h3>4. Mezcla y Conchado</h3>
+                    <p>La pasta de cacao se mezcla con ingredientes naturales como canela, vainilla o azúcar mascabado, y se amasa por horas para desarrollar su textura.</p>
+                </div>
+            </div>
+            
+            <div class="proceso-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="proceso-icon">
+                    <i class="fas fa-egg"></i>
+                </div>
+                <div class="proceso-content">
+                    <h3>5. Templado Artesanal</h3>
+                    <p>El chocolate se templa a la temperatura exacta mediante técnica manual, creando ese brillo y textura quebradiza característica.</p>
+                </div>
+            </div>
+            
+            <div class="proceso-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="proceso-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="proceso-content">
+                    <h3>6. Empaque Manual</h3>
+                    <p>Cada pieza es envuelta a mano en papel de plátano o empaques ecológicos, listas para compartir la tradición mixqueña.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section" id="galeria">
+    <div class="container">
+        <div class="section-title-container">
+            <div class="section-subtitle" data-aos="fade-up">Detrás de Escenas</div>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Nuestro Taller</h2>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                Un vistazo al corazón de nuestra chocolatería, donde la magia sucede entre risas, historias y mucho cariño.
+            </p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="fade-up">
+                <img src="/api/placeholder/800/600" alt="Señoras trabajando el chocolate">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Técnicas Ancestrales</h3>
+                        <p>El conocimiento transmitido por generaciones</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="/api/placeholder/800/600" alt="Moliendo cacao en metate">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Paciencia y Dedicación</h3>
+                        <p>Cada movimiento tiene un propósito</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                <img src="/api/placeholder/800/600" alt="Chocolate derritiéndose">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Ingredientes Naturales</h3>
+                        <p>Solo lo mejor de la tierra guatemalteca</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                <img src="/api/placeholder/800/600" alt="Productos terminados">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Arte Comestible</h3>
+                        <p>Formas y sabores que cuentan historias</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                <img src="/api/placeholder/800/600" alt="Familia chocolatera">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Comunidad y Familia</h3>
+                        <p>El verdadero secreto de nuestro éxito</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content" data-aos="fade-up">
+            <h2 class="cta-title">¿Listo para probar el auténtico chocolate de Mixco?</h2>
+            <p>Visita nuestro taller, conoce a nuestras chocolateras y descubre por qué este oficio es considerado patrimonio cultural.</p>
+            
+            <div class="cta-buttons">
+                <a href="#contacto" class="btn">
+                    <i class="fas fa-map-marker-alt"></i> Visítanos
+                </a>
+                <a href="#" class="btn btn-outline">
+                    <i class="fas fa-shopping-bag"></i> Tienda Online
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section" id="contacto">
+    <div class="container">
+        <div class="section-title-container">
+            <div class="section-subtitle" data-aos="fade-up">Conéctate con Nosotras</div>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Visítanos en Mixco</h2>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">
+                Estamos ubicadas en el corazón de Mixco, donde te recibiremos con una taza de chocolate caliente y muchas historias que compartir.
+            </p>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info" data-aos="fade-right">
+                <div class="contact-info-inner">
+                    <h3 class="contact-info-title">Información de Contacto</h3>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Dirección</h4>
+                            <p>Calle del Cacao 12-34, Zona 1<br>Mixco, Guatemala</p>
+                            <a href="#" class="map-link">Ver en mapa <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Horario</h4>
+                            <div class="schedule-item">
+                                <span class="days">Lunes a Viernes:</span>
+                                <span class="hours">8:00 - 17:00</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="days">Sábados:</span>
+                                <span class="hours">9:00 - 14:00</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="days">Domingos:</span>
+                                <span class="hours">Cerrado</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Contacto</h4>
+                            <div class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+50212345678">+502 1234 5678</a>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@chocolatemixco.com">info@chocolatemixco.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social-container">
+                       
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+        <div class="contact-map" data-aos="fade-up">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456.7890123456!2d-90.12345678901234!3d14.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDA3JzI0LjQiTiA5MMKwMDcnMTIuMyJX!5e0!3m2!1sen!2sgt!4v1234567890123!5m2!1sen!2sgt" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-img">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="footer-logo-text">Chocolate <span>Mixco</span></div>
+                </div>
+                <p>Preservando la tradición chocolatera de Mixco, Guatemala, desde 1950. Elaboramos productos artesanales con cacao 100% guatemalteco y técnicas ancestrales.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#hero"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                    <li><a href="#historia"><i class="fas fa-chevron-right"></i> Nuestra Historia</a></li>
+                    <li><a href="#productos"><i class="fas fa-chevron-right"></i> Productos</a></li>
+                    <li><a href="#proceso"><i class="fas fa-chevron-right"></i> Proceso Artesanal</a></li>
+                    <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3 class="footer-title">Productos</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Chocolate Criollo</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Chocolate Trinitario</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Chocolate Tradicional</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Chocolate con Especias</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Regalos Corporativos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                <ul>
+                    <li>
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="text">Calle del Cacao 12-34, Zona 1, Mixco, Guatemala</div>
+                    </li>
+                    <li>
+                        <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="text">+502 1234 5678</div>
+                    </li>
+                    <li>
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div class="text">info@chocolatemixco.com</div>
+                    </li>
+                    <li>
+                        <div class="icon"><i class="fas fa-clock"></i></div>
+                        <div class="text">Lun-Vie: 8:00-17:00<br>Sáb: 9:00-14:00</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Chocolate Mixco. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart" style="color: var(--accent-color);"></i> en Guatemala</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+        menuToggle.innerHTML = navMenu.classList.contains('show') 
+            ? '<i class="fas fa-times"></i>' 
+            : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('show');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+    
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Scroll down button
+    document.getElementById('scroll-btn').addEventListener('click', () => {
+        window.scrollTo({
+            top: window.innerHeight - 80,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Initialize AOS animation library
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+    });
+</script>
+</body> 
+</html>
